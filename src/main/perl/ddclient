@@ -4048,7 +4048,7 @@ sub nic_dyndns2_update {
                 # we can't use the returned IP
                 my ($status, $returnedip) = split / /, lc $line;
                 $ip = $returnedip if (not $ip);
-                my $h = shift @hosts;
+                my $h = @hosts > 1 ? shift @hosts : $hosts[0];
 
                 $config{$h}{'status'} = $status;
                 if ($status eq 'good') {
